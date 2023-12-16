@@ -5,6 +5,7 @@ from django.contrib.auth.models import (
     AbstractUser, AbstractBaseUser, BaseUserManager, PermissionsMixin)
 
 from django.db import models
+from rest_framework_simplejwt.tokens import RefreshToken
 
 
 
@@ -43,6 +44,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
     
+    # attributes user will use to login
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
     
@@ -52,4 +54,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.email
     
     def tokens(self):
-        return ''
+        refresh_token = RefreshToken.for_user(self)
+        return {
+            'refresh': str(refresh_token),
+            'access': str(refresh_token.access_token)
+        }
