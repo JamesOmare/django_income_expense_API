@@ -9,7 +9,7 @@ class Income(models.Model):
         ('OTHERS', 'OTHERS'),
     ]
     
-    category = models.CharField(choices = SOURCE_OPTIONS, max_length = 255)
+    source = models.CharField(choices = SOURCE_OPTIONS, max_length = 255)
     amount = models.DecimalField(max_digits = 10, decimal_places = 2)
     description = models.TextField()
     owner = models.ForeignKey(to = 'authentication.User', on_delete = models.CASCADE)

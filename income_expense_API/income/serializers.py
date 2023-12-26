@@ -4,4 +4,4 @@ from .models import Income
 class IncomeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Income
-        fields = ['description', 'amount', 'category', 'created_at']
+        fields = ['id', 'description', 'amount', 'source', 'created_at']
