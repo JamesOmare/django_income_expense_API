@@ -54,7 +54,8 @@ INSTALLED_APPS = [
     "corsheaders",
     "authentication",
     "expenses",
-    "income"
+    "income",
+    "userstats",
 ]
 
 
